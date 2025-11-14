@@ -33,17 +33,19 @@
     const startTime = 150;  // start at 2:30
     const endTime   = 180;  // end at 3:00
 
-    player.addEventListener("loadedmetadata", () => {
+   player.addEventListener("play", () => {
+    if (player.currentTime < startTime || player.currentTime > endTime) {
       player.currentTime = startTime;
-      player.play();
-    });
+    }
+  });
 
-    player.addEventListener("timeupdate", () => {
-      if (player.currentTime >= endTime) {
-        player.pause();
-      }
-    });
+  player.addEventListener("timeupdate", () => {
+    if (player.currentTime >= endTime) {
+      player.pause();
+    }
+  });
   </script>
 
 </body>
 </html>
+
